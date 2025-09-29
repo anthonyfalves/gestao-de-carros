@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: gf_db
+    environment:
+      POSTGRES_USER: gf_user
+      POSTGRES_PASSWORD: gf_pass
+      POSTGRES_DB: gf_db
+   # ports:
+   #  - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gf_user -d gf_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build: ./backend
+    container_name: gf_api
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: gf_user
+      DB_PASS: gf_pass
+      DB_NAME: gf_db
+      JWT_SECRET: "supersecret_local_only_change_me"
+      SOCKET_CORS_ORIGIN: "http://localhost:5173"
+      FORCE_PASSWORD_CHANGE_ON_FIRST_LOGIN: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "4000:4000"
+
+  frontend:
+    build: ./frontend
+    container_name: gf_web
+    environment:
+      VITE_API_BASE_URL: "http://localhost:4000"
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  db_data:
