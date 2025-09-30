@@ -25,9 +25,9 @@ Acesse o frontend em: **http://localhost:5173**
 API em: **http://localhost:4000**
 
 ### 🔐 Usuários iniciais (seeds)
-- **admin@local** | senha: `Trocar123!` (vai exigir troca no primeiro login)
-- **gestor@local** | senha: `Trocar123!`
-- **usuario@local** | senha: `Trocar123!`
+- **admin** | senha: `12345` (vai exigir troca no primeiro login)
+- **gestor** | senha: `12345`
+- **usuario** | senha: `12345`
 
 > No primeiro acesso, será exigida a troca de senha (conforme documentação).
 

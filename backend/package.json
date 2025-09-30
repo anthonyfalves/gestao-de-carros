@@ -7,7 +7,8 @@
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
     "db:migrate": "sequelize-cli db:migrate",
-    "db:seed": "sequelize-cli db:seed:all"
+    "db:seed": "sequelize-cli db:seed:all",
+    "users:reset-defaults": "node ./scripts/reset-users.mjs"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

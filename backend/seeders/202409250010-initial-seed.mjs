@@ -2,11 +2,11 @@
 import bcrypt from 'bcrypt';
 
 export async function up (queryInterface, Sequelize) {
-  const passwordHash = await bcrypt.hash('Trocar123!', 10);
+  const passwordHash = await bcrypt.hash('12345', 10);
   await queryInterface.bulkInsert('users', [
-    { email: 'admin@local', name: 'Admin', passwordHash, role: 'ADMIN', mustChangePassword: true, createdAt: new Date(), updatedAt: new Date() },
-    { email: 'gestor@local', name: 'Gestor', passwordHash, role: 'MANAGER', mustChangePassword: true, createdAt: new Date(), updatedAt: new Date() },
-    { email: 'usuario@local', name: 'Usuário', passwordHash, role: 'USER', mustChangePassword: true, createdAt: new Date(), updatedAt: new Date() },
+    { email: 'admin', name: 'Admin', passwordHash, role: 'ADMIN', mustChangePassword: true, createdAt: new Date(), updatedAt: new Date() },
+    { email: 'gestor', name: 'Gestor', passwordHash, role: 'MANAGER', mustChangePassword: true, createdAt: new Date(), updatedAt: new Date() },
+    { email: 'usuario', name: 'Usuário', passwordHash, role: 'USER', mustChangePassword: true, createdAt: new Date(), updatedAt: new Date() },
   ]);
 
   await queryInterface.bulkInsert('vehicles', [

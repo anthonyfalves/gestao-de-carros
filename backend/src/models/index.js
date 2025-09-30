@@ -45,7 +45,12 @@ export const Booking = sequelize.define('Booking', {
   requestedForId: { type: DataTypes.INTEGER, allowNull: false }, // para terceiros
   vehicleId: { type: DataTypes.INTEGER, allowNull: true },
   driverId: { type: DataTypes.INTEGER, allowNull: true },
-  status: { type: DataTypes.ENUM('PENDING','APPROVED','CANCELLED'), defaultValue: 'PENDING' }
+  startAt: { type: DataTypes.DATE, allowNull: false },
+  endAt: { type: DataTypes.DATE, allowNull: false },
+  approvedBy: { type: DataTypes.INTEGER, allowNull: true },
+  approvedAt: { type: DataTypes.DATE, allowNull: true },
+  rejectReason: { type: DataTypes.TEXT, allowNull: true },
+  status: { type: DataTypes.ENUM('PENDING','APPROVED','REJECTED','CANCELLED'), defaultValue: 'PENDING' }
 }, { tableName: 'bookings', timestamps: true });
 
 export const AuditLog = sequelize.define('AuditLog', {
@@ -60,6 +65,8 @@ User.hasMany(Booking, { foreignKey: 'requesterId', as: 'requested' });
 User.hasMany(Booking, { foreignKey: 'requestedForId', as: 'bookedFor' });
 Booking.belongsTo(User, { foreignKey: 'requesterId', as: 'requester' });
 Booking.belongsTo(User, { foreignKey: 'requestedForId', as: 'requestedFor' });
+User.hasMany(Booking, { foreignKey: 'approvedBy', as: 'approvedBookings' });
+Booking.belongsTo(User, { foreignKey: 'approvedBy', as: 'approver' });
 
 Vehicle.hasMany(Booking, { foreignKey: 'vehicleId' });
 Booking.belongsTo(Vehicle, { foreignKey: 'vehicleId' });

@@ -1,0 +1,120 @@
+.booking-scheduler {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+}
+
+.booking-scheduler .card {
+  background: #1e1f25;
+  border: 1px solid #2d2f3d;
+  border-radius: 16px;
+  padding: 16px;
+  color: #f1f1f5;
+}
+
+.booking-scheduler .card-title {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.booking-scheduler .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.booking-scheduler .columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.booking-scheduler .column {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-scheduler .form-label {
+  font-weight: 600;
+}
+
+.booking-scheduler .text-input {
+  background: #101119;
+  border: 1px solid #3b3d4d;
+  border-radius: 8px;
+  color: #f1f1f5;
+  padding: 10px 12px;
+}
+
+.booking-scheduler .text-input:focus {
+  border-color: #6c8df6;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(108, 141, 246, 0.2);
+}
+
+.booking-scheduler .helper-text {
+  font-size: 0.8rem;
+  color: #9aa0b5;
+}
+
+.booking-scheduler .slot-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.booking-scheduler .slot-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.booking-scheduler .slot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.booking-scheduler .slot-btn {
+  padding: 8px 14px;
+  border: 1px solid #5460ff;
+  background: transparent;
+  border-radius: 8px;
+  color: #e0e3ff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.booking-scheduler .slot-btn:hover {
+  background: rgba(84, 96, 255, 0.1);
+}
+
+.booking-scheduler .slot-btn.active,
+.booking-scheduler .slot-btn:focus {
+  background: #5460ff;
+  color: #fff;
+  outline: none;
+}
+
+.booking-scheduler .duration-ok {
+  color: #57dda0;
+  font-weight: 600;
+}
+
+.booking-scheduler .duration-warning {
+  color: #f3c56d;
+  font-size: 0.85rem;
+}
+
+.booking-scheduler .debug-log {
+  background: #101119;
+  color: #d7d9e6;
+  border-radius: 12px;
+  padding: 12px;
+  white-space: pre-wrap;
+  min-height: 80px;
+  font-size: 0.78rem;
+}
