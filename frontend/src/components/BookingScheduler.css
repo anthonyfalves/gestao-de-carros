@@ -108,13 +108,3 @@
   color: #f3c56d;
   font-size: 0.85rem;
 }
-
-.booking-scheduler .debug-log {
-  background: #101119;
-  color: #d7d9e6;
-  border-radius: 12px;
-  padding: 12px;
-  white-space: pre-wrap;
-  min-height: 80px;
-  font-size: 0.78rem;
-}

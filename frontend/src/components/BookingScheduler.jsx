@@ -84,7 +84,7 @@ export default function BookingScheduler({
         valid = false;
       }
       if (!nextEntrada) {
-        messages.push('Selecione a chegada.');
+        messages.push('Selecione a Retorno.');
         valid = false;
       }
       let duration = '';
@@ -92,7 +92,7 @@ export default function BookingScheduler({
         const start = new Date(nextSaida);
         const end = new Date(nextEntrada);
         if (end <= start) {
-          messages.push('Chegada deve ser após a saída.');
+          messages.push('Retorno deve ser após a saída.');
           valid = false;
         } else {
           duration = calcDurationLabel(nextSaida, nextEntrada);
@@ -242,7 +242,7 @@ export default function BookingScheduler({
     <div className={`booking-scheduler ${className || ''}`}>
       <div className="card">
         <div className="card-body">
-          <h3 className="card-title">Selecione Saída e Chegada</h3>
+          <h3 className="card-title">Selecione Saída e Retorno</h3>
           <div className="columns">
             <div className="column">
               <label htmlFor="saida" className="form-label">Data/Hora de Saída</label>
@@ -274,9 +274,9 @@ export default function BookingScheduler({
               )}
             </div>
             <div className="column">
-              <label htmlFor="entrada" className="form-label">Data/Hora de Chegada</label>
-              <input ref={entradaRef} id="entrada" className="text-input" placeholder="Escolha data e hora de chegada" />
-              <small className="helper-text">Chegada não pode ser antes da saída.</small>
+              <label htmlFor="entrada" className="form-label">Data/Hora de Retorno</label>
+              <input ref={entradaRef} id="entrada" className="text-input" placeholder="Escolha data e hora de Retorno" />
+              <small className="helper-text">Retorno não pode ser antes da saída.</small>
               {entradaSlots.length > 0 && (
                 <div className="slot-area">
                   <div className="slot-title">Horários disponíveis:</div>
@@ -310,14 +310,6 @@ export default function BookingScheduler({
           {!info.valid && info.messages.map((msg) => (
             <div key={msg} className="duration-warning">{msg}</div>
           ))}
-          <pre className="debug-log">
-            {JSON.stringify({
-              saida_iso: saidaISO,
-              entrada_iso: entradaISO,
-              valido: info.valid,
-              mensagens: info.messages,
-            }, null, 2)}
-          </pre>
         </div>
       </div>
     </div>
